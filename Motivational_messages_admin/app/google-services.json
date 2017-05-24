@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "703163529655",
+    "firebase_url": "https://selfback-3b8c8.firebaseio.com",
+    "project_id": "selfback-3b8c8",
+    "storage_bucket": "selfback-3b8c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703163529655:android:67414e6398ca722f",
+        "android_client_info": {
+          "package_name": "com.example.alexandre.motivational_messages"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703163529655-sj4sed2au64cs3bvt70jl1ci01b2las7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alexandre.motivational_messages",
+            "certificate_hash": "be922b8cb37519ee21f77f0288eada0d6b7be9b8"
+          }
+        },
+        {
+          "client_id": "703163529655-vriqnkffmth5tnhvc00nvq184ommhf1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbncn1Voz_-ixTPur8BZafymzJDPDHVlM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703163529655-vriqnkffmth5tnhvc00nvq184ommhf1q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703163529655:android:21ece8c7fd6d218c",
+        "android_client_info": {
+          "package_name": "com.example.alexandre.motivational_messages_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703163529655-o6rkf54053emk5fsd5fl5ujj3kme9qj7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alexandre.motivational_messages_admin",
+            "certificate_hash": "be922b8cb37519ee21f77f0288eada0d6b7be9b8"
+          }
+        },
+        {
+          "client_id": "703163529655-vriqnkffmth5tnhvc00nvq184ommhf1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbncn1Voz_-ixTPur8BZafymzJDPDHVlM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703163529655-vriqnkffmth5tnhvc00nvq184ommhf1q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
