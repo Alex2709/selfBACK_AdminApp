@@ -124,7 +124,9 @@ public class MessagesManager extends AppCompatActivity {
         pb_messagesLoading.setVisibility(View.GONE);
         final RadioGroup rg_achievementLevel = (RadioGroup)findViewById(R.id.ma_rg_achievementLevels);
         final TextView tv_none = (TextView) findViewById(R.id.tv_None);
-        tv_none.setText("None");
+        final TextView tv_listMessages = (TextView)findViewById(R.id.tv_listMessages);
+        tv_listMessages.setVisibility(View.GONE);
+        tv_none.setVisibility(View.GONE);
         spinner_category = (Spinner)findViewById(R.id.ma_spinner_category);
 
         final MessagesAdapter adapter = new MessagesAdapter(this, messagesList);
@@ -182,6 +184,7 @@ public class MessagesManager extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if(task.isSuccessful()){
+                            tv_listMessages.setVisibility(View.VISIBLE);
                             Log.d("task", "success");
                             messagesList.clear();
                             messagesList.addAll((ArrayList<Message>)task.getResult());

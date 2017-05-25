@@ -24,6 +24,8 @@ public class MainMenu extends AppCompatActivity {
         Button bt_activitiesManager = (Button)findViewById(R.id.bt_activities);
         Button bt_messagesManager = (Button)findViewById(R.id.bt_messages);
         Button bt_informationManager = (Button)findViewById(R.id.bt_information);
+        Button bt_confirmationManager = (Button)findViewById(R.id.bt_confirmation);
+
 
 
         bt_activitiesManager.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +49,14 @@ public class MainMenu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent informationManagerActivity = new Intent(MainMenu.this, InformationManager.class);
                 startActivity(informationManagerActivity);
+            }
+        });
+
+        bt_confirmationManager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent confirmationManagerActivity = new Intent(MainMenu.this, ConfirmationManager.class);
+                startActivity(confirmationManagerActivity);
             }
         });
     }

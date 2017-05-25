@@ -21,6 +21,7 @@ import com.example.alexandre.motivational_messages_admin.Model.Information;
 import com.example.alexandre.motivational_messages_admin.Model.Message;
 import com.example.alexandre.motivational_messages_admin.R;
 import com.example.alexandre.motivational_messages_admin.View.Dialogs.elementDeleteDialog;
+import com.example.alexandre.motivational_messages_admin.View.Dialogs.elementDetailsDialog;
 import com.example.alexandre.motivational_messages_admin.View.Dialogs.newInformationDialog;
 import com.example.alexandre.motivational_messages_admin.View.InformationAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -57,6 +58,10 @@ public class InformationManager extends AppCompatActivity {
         pb_info.setVisibility(View.GONE);
         final RadioGroup rg_infoType = (RadioGroup)findViewById(R.id.rg_infoType);
         final TextView tv_noneInfo = (TextView) findViewById(R.id.tv_noneInfo);
+        final TextView tv_listInfo = (TextView) findViewById(R.id.tv_listInfo);
+        tv_noneInfo.setVisibility(View.GONE);
+        tv_listInfo.setVisibility(View.GONE);
+
 
         final InformationAdapter adapter = new InformationAdapter(this, informationList);
         lv_info.setAdapter(adapter);
@@ -79,6 +84,7 @@ public class InformationManager extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if(task.isSuccessful()){
+                            tv_listInfo.setVisibility(View.VISIBLE);
                             Log.d("task", "success");
                             informationList.clear();
                             informationList.addAll((ArrayList<Information>)task.getResult());
@@ -115,6 +121,16 @@ public class InformationManager extends AppCompatActivity {
                 pb_info.setVisibility(View.VISIBLE);
                 pb_info.setIndeterminate(true);
                 InformationDAO.getInstance().getInformation(type, getInformationTask);
+            }
+        });
+
+        lv_info.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Information infoClicked = adapter.getItem(position);
+
+                DialogFragment infoDetails = elementDetailsDialog.newInstance(infoClicked);
+                infoDetails.show(getFragmentManager(),TAG);
             }
         });
 
