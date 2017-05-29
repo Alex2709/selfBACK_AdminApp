@@ -43,20 +43,8 @@ public class newCategoryDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         EditText et_category = (EditText)view.findViewById(R.id.et_cname);
 
-
                         MessagesManager.bctCategory_list.add(et_category.getText().toString());
                         MessagesManager.categories_adapter.notifyDataSetChanged();
-
-                        try {
-                            outputStreamWriter = new OutputStreamWriter(getContext().openFileOutput(messagesCategoriesFileName, Context.MODE_APPEND));
-                            outputStreamWriter.append(et_category.getText().toString() + '\n');
-                            outputStreamWriter.close();
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
 
                     }
                 })

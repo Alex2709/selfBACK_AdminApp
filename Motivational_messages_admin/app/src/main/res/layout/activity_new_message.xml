@@ -64,21 +64,32 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Low" />
+                android:text="Low"
+                android:textSize="12dp"/>
 
             <RadioButton
                 android:id="@+id/r_moderate"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Moderate" />
+                android:text="Moderate"
+                android:textSize="12dp"/>
 
             <RadioButton
                 android:id="@+id/r_high"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="High" />
+                android:text="High"
+                android:textSize="12dp"/>
+
+            <RadioButton
+                android:id="@+id/r_full"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Full"
+                android:textSize="12dp"/>
 
         </RadioGroup>
 

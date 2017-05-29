@@ -17,9 +17,10 @@
         </activity>
         <activity android:name=".View.Activities.NewMessage" />
         <activity android:name=".View.Activities.MessagesManager" />
-        <activity android:name=".View.Activities.ActivityConversion" />
+        <activity android:name=".View.Activities.ActivityNewConversion" />
         <activity android:name=".View.Activities.InformationManager" />
-        <activity android:name=".View.Activities.ConfirmationManager"></activity>
+        <activity android:name=".View.Activities.ConfirmationManager" />
+        <activity android:name=".View.Activities.ConversionManager"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.alexandre.motivational_messages_admin.View.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +12,13 @@ import com.example.alexandre.motivational_messages_admin.Controller.ActivityConv
 import com.example.alexandre.motivational_messages_admin.Model.ActivityToSteps;
 import com.example.alexandre.motivational_messages_admin.R;
 
-public class ActivityConversion extends AppCompatActivity {
+public class ActivityNewConversion extends AppCompatActivity {
+    private static final String TAG = MessagesManager.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conversion);
+        setContentView(R.layout.activity_new_conversion);
 
         final EditText et_activityName = (EditText)findViewById(R.id.et_activityName);
         final EditText et_stepsPerMinute = (EditText)findViewById(R.id.et_stepsPerMinute);
@@ -36,5 +38,12 @@ public class ActivityConversion extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void finish(){
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        super.finish();
     }
 }

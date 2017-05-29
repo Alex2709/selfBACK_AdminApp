@@ -136,4 +136,22 @@ public class MessageDAO {
             }
         });
     }
+
+    public void getCategories(final TaskCompletionSource<ArrayList<String>> categoriesGetter){
+        final ArrayList<String> categoriesList = new ArrayList<>();
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot D : dataSnapshot.getChildren()){
+                    categoriesList.add(D.getKey());
+                }
+                categoriesGetter.setResult(categoriesList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

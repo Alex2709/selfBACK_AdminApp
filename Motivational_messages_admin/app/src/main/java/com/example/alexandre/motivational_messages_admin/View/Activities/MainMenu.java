@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.alexandre.motivational_messages_admin.Model.Information;
 import com.example.alexandre.motivational_messages_admin.R;
 
 public class MainMenu extends AppCompatActivity {
@@ -31,7 +30,7 @@ public class MainMenu extends AppCompatActivity {
         bt_activitiesManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent activityConversionActivity = new Intent(MainMenu.this, ActivityConversion.class);
+                Intent activityConversionActivity = new Intent(MainMenu.this, ConversionManager.class);
                 startActivity(activityConversionActivity);
             }
         });

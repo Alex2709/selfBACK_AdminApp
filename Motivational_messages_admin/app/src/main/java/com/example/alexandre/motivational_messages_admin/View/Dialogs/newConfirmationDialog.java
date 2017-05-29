@@ -43,27 +43,30 @@ public class newConfirmationDialog extends DialogFragment {
         rb_stepsConf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newText = et_contentConf.getText().toString().replace("<mins>","<steps>");
+                String newText = et_contentConf.getText().toString().replace("<time>"," <steps>");
                 et_contentConf.setText(newText);
                 bt_placeholder.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_steps, 0, 0, 0);
+                bt_placeholder.setText(bt_placeholder.getText().toString().replace("'time'","'steps'"));
             }
         });
 
         rb_activityConf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newText = et_contentConf.getText().toString().replace("<steps>","<mins>");
+                String newText = et_contentConf.getText().toString().replace("<steps>","<time>");
                 et_contentConf.setText(newText);
                 bt_placeholder.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_activities, 0, 0, 0);
+                bt_placeholder.setText(bt_placeholder.getText().toString().replace("'steps'","'time'"));
             }
         });
 
         rb_inactivityConf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newText = et_contentConf.getText().toString().replace("<steps>","<mins>");
+                String newText = et_contentConf.getText().toString().replace("<steps>","<time>");
                 et_contentConf.setText(newText);
                 bt_placeholder.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_inactivity, 0, 0, 0);
+                bt_placeholder.setText(bt_placeholder.getText().toString().replace("'steps'","'time'"));
             }
         });
 
@@ -73,13 +76,13 @@ public class newConfirmationDialog extends DialogFragment {
             public void onClick(View v) {
                 String newText = "";
                 if(rb_activityConf.isChecked())
-                    newText = et_contentConf.getText().toString() + "<mins>";
+                    newText = et_contentConf.getText().toString() + " <time> ";
 
                 if(rb_inactivityConf.isChecked())
-                    newText = et_contentConf.getText().toString() + "<mins>";
+                    newText = et_contentConf.getText().toString() + " <time> ";
 
                 if(rb_stepsConf.isChecked())
-                    newText = et_contentConf.getText().toString() + "<steps>";
+                    newText = et_contentConf.getText().toString() + " <steps> ";
 
                 et_contentConf.setText(newText);
             }

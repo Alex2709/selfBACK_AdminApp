@@ -86,6 +86,10 @@ public class NewMessage extends AppCompatActivity {
                     break;
                 case High:
                     rg_achievementLevel.check(R.id.r_high);
+                    break;
+                case Full:
+                    rg_achievementLevel.check(R.id.r_full);
+                    break;
             }
 
             int spinnerPosition = categories_adapter.getPosition(newMessage.getStrBctCategory());
@@ -141,8 +145,10 @@ public class NewMessage extends AppCompatActivity {
                     if(rb_index == R.id.r_moderate)
                         newMessage.setAchievement(MessagesManager.Achievement.Moderate);
                     else
-                    if(rb_index == R.id.r_high)
-                        newMessage.setAchievement(MessagesManager.Achievement.High);
+                        if(rb_index == R.id.r_high)
+                            newMessage.setAchievement(MessagesManager.Achievement.High);
+                        else
+                            newMessage.setAchievement(MessagesManager.Achievement.Full);
                 }
 
                 newMessage.setContent(et_content.getText().toString());

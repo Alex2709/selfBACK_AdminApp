@@ -51,11 +51,15 @@ public class MessagesManager extends AppCompatActivity {
     public enum Achievement {
         Low,
         Moderate,
-        High
+        High,
+        Full
     }
 
     private TaskCompletionSource<ArrayList<Message>> getMessagesTask;
+    private TaskCompletionSource<ArrayList<String>> getCategoriesTask;
     private Task getMessagesTaskWaiter;
+    private Task getCategoriesTaskWaiter;
+
 
     private Spinner spinner_category;
     public static ArrayAdapter<String> categories_adapter;
@@ -74,8 +78,9 @@ public class MessagesManager extends AppCompatActivity {
 
         bctCategory_list = new ArrayList<>();
 
+
         /*Create a file to store the categories of messages, of read them from an existing file*/
-        try {
+        /*try {
             inputStream = openFileInput(messagesCategoriesFileName);
             //If file exists
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -108,7 +113,7 @@ public class MessagesManager extends AppCompatActivity {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         messagesList = new ArrayList<>();
 
@@ -132,13 +137,30 @@ public class MessagesManager extends AppCompatActivity {
         final MessagesAdapter adapter = new MessagesAdapter(this, messagesList);
         lv_messages.setAdapter(adapter);
 
-
         categories_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bctCategory_list);
         categories_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner_category.setAdapter(categories_adapter);
 
-        MessageDAO.getInstance().getMessages(Achievement.High, "Action Planning", getMessagesTask);
+        getCategoriesTask = new TaskCompletionSource<>();
+        getCategoriesTaskWaiter = getCategoriesTask.getTask();
+
+        getCategoriesTaskWaiter.addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if(task.isSuccessful()){
+                    bctCategory_list.addAll((ArrayList<String>)task.getResult());
+                    categories_adapter.notifyDataSetChanged();
+                }
+                else{
+                    Exception e = task.getException();
+                    System.out.println(e.getMessage());
+                }
+            }
+        });
+
+        MessageDAO.getInstance().getCategories(getCategoriesTask);
+
 
         lv_messages.setOnItemClickListener(new AdapterView.OnItemClickListener(){
            @Override
@@ -213,9 +235,14 @@ public class MessagesManager extends AppCompatActivity {
                 }else{
                     if(rb_index == R.id.ma_r_moderate)
                         level = Achievement.Moderate;
-                    else
-                    if(rb_index == R.id.ma_r_high)
-                        level = Achievement.High;
+                    else{
+                        if(rb_index == R.id.ma_r_high){
+                            level = Achievement.High;
+                        }else{
+                            if(rb_index == R.id.ma_r_full)
+                                level = Achievement.Full;
+                        }
+                    }
                 }
                 pb_messagesLoading.setVisibility(View.VISIBLE);
                 pb_messagesLoading.setIndeterminate(true);
