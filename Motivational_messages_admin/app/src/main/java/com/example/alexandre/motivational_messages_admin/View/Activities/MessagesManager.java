@@ -78,43 +78,6 @@ public class MessagesManager extends AppCompatActivity {
 
         bctCategory_list = new ArrayList<>();
 
-
-        /*Create a file to store the categories of messages, of read them from an existing file*/
-        /*try {
-            inputStream = openFileInput(messagesCategoriesFileName);
-            //If file exists
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader br = new BufferedReader(inputStreamReader);
-            StringBuilder stringBuilder = new StringBuilder();
-            String category;
-            while((category = br.readLine()) != null){
-                stringBuilder.append(category);
-                bctCategory_list.add(category);
-            }
-            inputStream.close();
-        } catch (FileNotFoundException e) {
-            try {
-                //If file doesn't exist
-                bctCategory_list.add("Goal Setting");
-                bctCategory_list.add("Prompts and cues");
-                bctCategory_list.add("Social Reward");
-
-                outputStreamWriter = new OutputStreamWriter(openFileOutput(messagesCategoriesFileName, Context.MODE_PRIVATE));
-
-                for(String category : bctCategory_list){
-                    outputStreamWriter.write(category + '\n');
-                }
-
-                outputStreamWriter.close();
-            } catch (FileNotFoundException e1) {
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
         messagesList = new ArrayList<>();
 
         getMessagesTask = new TaskCompletionSource<>();

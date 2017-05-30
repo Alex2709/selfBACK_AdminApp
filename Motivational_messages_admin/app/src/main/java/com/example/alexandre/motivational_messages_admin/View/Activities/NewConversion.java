@@ -12,7 +12,7 @@ import com.example.alexandre.motivational_messages_admin.Controller.ActivityConv
 import com.example.alexandre.motivational_messages_admin.Model.ActivityToSteps;
 import com.example.alexandre.motivational_messages_admin.R;
 
-public class ActivityNewConversion extends AppCompatActivity {
+public class NewConversion extends AppCompatActivity {
     private static final String TAG = MessagesManager.class.getSimpleName();
 
     @Override

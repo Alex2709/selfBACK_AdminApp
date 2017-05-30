@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.alexandre.motivational_messages_admin.Controller.ActivityConversionDAO;
 import com.example.alexandre.motivational_messages_admin.Model.ActivityToSteps;
-import com.example.alexandre.motivational_messages_admin.Model.Message;
 import com.example.alexandre.motivational_messages_admin.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +23,8 @@ import com.google.android.gms.tasks.TaskCompletionSource;
 import java.util.ArrayList;
 
 public class ConversionManager extends AppCompatActivity {
+
+    private Context context;
 
     private static final String TAG = MessagesManager.class.getSimpleName();
 
@@ -42,6 +42,8 @@ public class ConversionManager extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversion_manager);
+
+        context = this;
 
         activityConversionList = new ArrayList<>();
         activityList = new ArrayList<>();
@@ -99,7 +101,7 @@ public class ConversionManager extends AppCompatActivity {
         bt_addConversion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent activityConversionActivity = new Intent(ConversionManager.this, ActivityNewConversion.class);
+                Intent activityConversionActivity = new Intent(ConversionManager.this, NewConversion.class);
                 startActivityForResult(activityConversionActivity,0);
             }
         });
@@ -109,6 +111,7 @@ public class ConversionManager extends AppCompatActivity {
             public void onClick(View v) {
                 ActivityConversionDAO.getInstance().updateConversion(selectedActivity,Float.parseFloat(et_conversion.getText().toString()));
                 activityConversionList.get(sp_activityList.getSelectedItemPosition()).setNumberStepsPerMinute(Float.parseFloat(et_conversion.getText().toString()));
+                Toast.makeText(context, "Conversion edited", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -133,6 +136,7 @@ public class ConversionManager extends AppCompatActivity {
                         }
 
                         categories_adapter.notifyDataSetChanged();
+                        Toast.makeText(context, "Conversion added", Toast.LENGTH_SHORT).show();
                     }
                     else{
                         Exception e = task.getException();

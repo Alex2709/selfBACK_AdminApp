@@ -110,8 +110,6 @@ public class ConfirmationManager extends AppCompatActivity {
                     }
                 });
 
-                //TODO : POURQUOI LES ATTRIBUTS DES INSTANCES RECUPEREES SONT VIDES
-
                 int rb_index = rg_confType.getCheckedRadioButtonId();
                 String type = "";
                 if(rb_index == R.id.rb_activityConf){
