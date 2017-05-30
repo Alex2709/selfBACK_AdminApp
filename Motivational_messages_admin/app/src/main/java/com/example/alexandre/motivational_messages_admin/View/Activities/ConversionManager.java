@@ -91,7 +91,6 @@ public class ConversionManager extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(activityConversionList.size() != 0){
-                    selectedActivity = activityConversionList.get(position).getActivityName();
                     et_conversion.setText(Float.toString(activityConversionList.get(position).getNumberStepsPerMinute()));
                 }
             }
@@ -113,6 +112,7 @@ public class ConversionManager extends AppCompatActivity {
         bt_conversionEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                selectedActivity = sp_activityList.getSelectedItem().toString();
                 ActivityConversionDAO.getInstance().updateConversion(selectedActivity,Float.parseFloat(et_conversion.getText().toString()));
                 activityConversionList.get(sp_activityList.getSelectedItemPosition()).setNumberStepsPerMinute(Float.parseFloat(et_conversion.getText().toString()));
                 Toast.makeText(context, "Conversion edited", Toast.LENGTH_SHORT).show();
