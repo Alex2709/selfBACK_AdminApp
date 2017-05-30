@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
@@ -33,6 +34,6 @@ public class datePickerDialog extends DialogFragment implements DatePickerDialog
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         TextView tv_date = (TextView)getActivity().findViewById(R.id.tv_date);
 
-        tv_date.setText("Date : " + Integer.toString(dayOfMonth) + "/" + Integer.toString(month) + "/" + Integer.toString(year));
+        tv_date.setText(Html.fromHtml("Date : <font color='#000000'>" + Integer.toString(dayOfMonth) + "/" + Integer.toString(month) + "/" + Integer.toString(year) + "</font>"));
     }
 }

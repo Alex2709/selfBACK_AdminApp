@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.format.DateFormat;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -34,6 +35,6 @@ public class timePickerDialog extends DialogFragment
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         TextView tv_date = (TextView)getActivity().findViewById(R.id.tv_time);
 
-        tv_date.setText("Start time : " + Integer.toString(hourOfDay) + ":" + Integer.toString(minute));
+        tv_date.setText(Html.fromHtml("Start time : <font color='#000000'>" + Integer.toString(hourOfDay) + ":" + Integer.toString(minute)+ "</font>"));
     }
 }

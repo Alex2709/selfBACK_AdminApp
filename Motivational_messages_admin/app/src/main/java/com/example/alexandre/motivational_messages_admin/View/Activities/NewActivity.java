@@ -43,6 +43,7 @@ public class NewActivity extends AppCompatActivity {
 
         activityConversionList = new ArrayList<>();
         activityList = new ArrayList<>();
+        activityList.add("Loading list...");
 
         Spinner sp_activityList = (Spinner)findViewById(R.id.sp_newActivity);
         NumberPicker np_hours = (NumberPicker)findViewById(R.id.np_hours);
@@ -64,6 +65,8 @@ public class NewActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task task) {
                 if(task.isSuccessful()){
+                    activityList.clear();
+
                     activityConversionList.addAll((ArrayList<ActivityToSteps>)task.getResult());
 
                     for(ActivityToSteps ats : activityConversionList){

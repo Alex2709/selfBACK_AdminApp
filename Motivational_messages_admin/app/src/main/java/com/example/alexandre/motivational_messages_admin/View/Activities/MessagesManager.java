@@ -77,6 +77,7 @@ public class MessagesManager extends AppCompatActivity {
         context = this;
 
         bctCategory_list = new ArrayList<>();
+        bctCategory_list.add("Loading list...");
 
         messagesList = new ArrayList<>();
 
@@ -112,6 +113,7 @@ public class MessagesManager extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task task) {
                 if(task.isSuccessful()){
+                    bctCategory_list.clear();
                     bctCategory_list.addAll((ArrayList<String>)task.getResult());
                     categories_adapter.notifyDataSetChanged();
                 }

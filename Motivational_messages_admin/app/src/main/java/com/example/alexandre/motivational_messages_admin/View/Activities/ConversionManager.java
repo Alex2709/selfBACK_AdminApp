@@ -47,6 +47,7 @@ public class ConversionManager extends AppCompatActivity {
 
         activityConversionList = new ArrayList<>();
         activityList = new ArrayList<>();
+        activityList.add("Loading list...");
 
         final Spinner sp_activityList = (Spinner)findViewById(R.id.sp_activityList);
         final EditText et_conversion = (EditText)findViewById(R.id.et_conversion);
@@ -65,6 +66,7 @@ public class ConversionManager extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task task) {
                 if(task.isSuccessful()){
+                    activityList.clear();
                     activityConversionList.addAll((ArrayList<ActivityToSteps>)task.getResult());
 
                     for(ActivityToSteps ats : activityConversionList){
@@ -88,8 +90,10 @@ public class ConversionManager extends AppCompatActivity {
         sp_activityList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedActivity = activityConversionList.get(position).getActivityName();
-                et_conversion.setText(Float.toString(activityConversionList.get(position).getNumberStepsPerMinute()));
+                if(activityConversionList.size() != 0){
+                    selectedActivity = activityConversionList.get(position).getActivityName();
+                    et_conversion.setText(Float.toString(activityConversionList.get(position).getNumberStepsPerMinute()));
+                }
             }
 
             @Override
