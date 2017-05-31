@@ -23,11 +23,16 @@ import com.google.android.gms.tasks.TaskCompletionSource;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NewActivity extends AppCompatActivity {
 
     private TaskCompletionSource<ArrayList<ActivityToSteps>> getConversionTask;
     private Task getConversionTaskWaiter;
+
+    public static Date date;
+    public static int hourStartTime;
+    public static int minutesStartTime;
 
     private ArrayList<ActivityToSteps> activityConversionList;
     private ArrayList<String> activityList;

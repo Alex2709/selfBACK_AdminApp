@@ -11,8 +11,10 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.example.alexandre.motivational_messages_admin.R;
+import com.example.alexandre.motivational_messages_admin.View.Activities.NewActivity;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Alexandre on 30/05/2017.
@@ -33,6 +35,8 @@ public class datePickerDialog extends DialogFragment implements DatePickerDialog
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         TextView tv_date = (TextView)getActivity().findViewById(R.id.tv_date);
+
+        NewActivity.date = new Date(year,month,dayOfMonth);
 
         tv_date.setText(Html.fromHtml("Date : <font color='#000000'>" + Integer.toString(dayOfMonth) + "/" + Integer.toString(month) + "/" + Integer.toString(year) + "</font>"));
     }

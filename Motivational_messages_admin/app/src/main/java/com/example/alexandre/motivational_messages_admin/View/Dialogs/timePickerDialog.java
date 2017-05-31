@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.alexandre.motivational_messages_admin.R;
+import com.example.alexandre.motivational_messages_admin.View.Activities.NewActivity;
 
 import java.util.Calendar;
 
@@ -34,6 +35,9 @@ public class timePickerDialog extends DialogFragment
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         TextView tv_date = (TextView)getActivity().findViewById(R.id.tv_time);
+
+        NewActivity.hourStartTime = hourOfDay;
+        NewActivity.minutesStartTime = minute;
 
         tv_date.setText(Html.fromHtml("Start time : <font color='#000000'>" + Integer.toString(hourOfDay) + ":" + Integer.toString(minute)+ "</font>"));
     }
