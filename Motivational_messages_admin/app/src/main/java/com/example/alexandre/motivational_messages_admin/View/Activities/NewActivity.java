@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.alexandre.motivational_messages_admin.Controller.ActivityConversionDAO;
 import com.example.alexandre.motivational_messages_admin.Model.ActivityToSteps;
@@ -19,8 +18,6 @@ import com.example.alexandre.motivational_messages_admin.View.Dialogs.timePicker
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -87,7 +84,7 @@ public class NewActivity extends AppCompatActivity {
             }
         });
 
-        ActivityConversionDAO.getInstance().getConversion(getConversionTask);
+        ActivityConversionDAO.getInstance().getConversionList(getConversionTask);
 
         np_hours.setMinValue(0);
         np_hours.setMaxValue(24);

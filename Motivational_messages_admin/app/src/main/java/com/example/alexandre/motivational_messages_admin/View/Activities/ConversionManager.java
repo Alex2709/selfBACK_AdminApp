@@ -84,7 +84,7 @@ public class ConversionManager extends AppCompatActivity {
             }
         });
 
-        ActivityConversionDAO.getInstance().getConversion(getConversionTask);
+        ActivityConversionDAO.getInstance().getConversionList(getConversionTask);
 
 
         sp_activityList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -149,7 +149,7 @@ public class ConversionManager extends AppCompatActivity {
                 }
             });
 
-            ActivityConversionDAO.getInstance().getConversion(getConversionTask);
+            ActivityConversionDAO.getInstance().getConversionList(getConversionTask);
 
         }
     }
