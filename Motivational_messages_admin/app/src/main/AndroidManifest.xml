@@ -21,7 +21,11 @@
         <activity android:name=".View.Activities.InformationManager" />
         <activity android:name=".View.Activities.ConfirmationManager" />
         <activity android:name=".View.Activities.ConversionManager" />
-        <activity android:name=".View.Activities.NewActivity"></activity>
+        <activity android:name=".View.Activities.NewActivity" />
+        <activity android:name=".View.Activities.DayWeekChoice" />
+        <activity android:name=".View.Activities.MessagesManagerNoCate" />
+        <activity android:name=".View.Activities.NewDayMessage" />
+        <activity android:name=".View.Activities.NewWeekMessage"></activity>
     </application>
 
 </manifest>

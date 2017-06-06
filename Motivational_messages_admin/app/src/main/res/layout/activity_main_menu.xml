@@ -51,10 +51,19 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bt_test"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Manage messages "
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bt_messagesNoCate"
+            android:drawableLeft="@mipmap/ic_message"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
 
 </LinearLayout>

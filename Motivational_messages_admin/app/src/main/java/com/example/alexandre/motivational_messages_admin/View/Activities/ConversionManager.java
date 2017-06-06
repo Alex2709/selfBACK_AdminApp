@@ -54,6 +54,8 @@ public class ConversionManager extends AppCompatActivity {
         Button bt_conversionEdit = (Button)findViewById(R.id.bt_conversionEdit);
         Button bt_addConversion = (Button)findViewById(R.id.bt_startNewConversion);
 
+
+        //Tasks to get the list of conversions in the database
         getConversionTask = new TaskCompletionSource<>();
         getConversionTaskWaiter = getConversionTask.getTask();
 
@@ -62,6 +64,7 @@ public class ConversionManager extends AppCompatActivity {
 
         sp_activityList.setAdapter(categories_adapter);
 
+        //Listener executed once all the categories are pulled
         getConversionTaskWaiter.addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete(@NonNull Task task) {
@@ -84,8 +87,8 @@ public class ConversionManager extends AppCompatActivity {
             }
         });
 
+        //Start the async task
         ActivityConversionDAO.getInstance().getConversionList(getConversionTask);
-
 
         sp_activityList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
