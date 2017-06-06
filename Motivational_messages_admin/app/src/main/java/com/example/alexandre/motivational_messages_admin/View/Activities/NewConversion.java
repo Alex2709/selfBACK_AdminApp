@@ -28,6 +28,7 @@ public class NewConversion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String activityName = et_activityName.getText().toString();
+
                 int stepsPerMinute = Integer.valueOf(et_stepsPerMinute.getText().toString());
 
                 ActivityToSteps newConversion = new ActivityToSteps(activityName, stepsPerMinute);

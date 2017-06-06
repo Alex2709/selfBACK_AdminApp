@@ -44,7 +44,6 @@ public class ActivityConversionDAO {
             catch(Exception e){
                 System.out.println(e.getMessage());
             }
-
         }
     }
 
