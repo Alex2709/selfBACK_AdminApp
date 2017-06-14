@@ -13,7 +13,9 @@ import android.widget.TextView;
 import com.example.alexandre.motivational_messages_admin.Model.Information;
 import com.example.alexandre.motivational_messages_admin.Model.Message;
 import com.example.alexandre.motivational_messages_admin.R;
+import com.example.alexandre.motivational_messages_admin.View.Activities.NewDayMessage;
 import com.example.alexandre.motivational_messages_admin.View.Activities.NewMessage;
+import com.example.alexandre.motivational_messages_admin.View.Activities.NewWeekMessage;
 
 /**
  * Created by Alexandre on 05/05/2017.
@@ -68,9 +70,23 @@ public class elementDetailsDialog extends DialogFragment {
                     .setPositiveButton(R.string.edit, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            Intent messageEditing = new Intent(getActivity(), NewMessage.class);
-                            messageEditing.putExtra("messageToEdit", message);
-                            getActivity().startActivity(messageEditing);
+                            if(message.getDayWeek().equals("")){
+                                Intent messageEditing = new Intent(getActivity(), NewMessage.class);
+                                messageEditing.putExtra("messageToEdit", message);
+                                getActivity().startActivity(messageEditing);
+                            }
+                            else{
+                                if(message.getDayWeek().equals("Day")){
+                                    Intent messageEditing = new Intent(getActivity(), NewDayMessage.class);
+                                    messageEditing.putExtra("messageToEdit", message);
+                                    getActivity().startActivity(messageEditing);
+                                }
+                                else{
+                                    Intent messageEditing = new Intent(getActivity(), NewWeekMessage.class);
+                                    messageEditing.putExtra("messageToEdit", message);
+                                    getActivity().startActivity(messageEditing);
+                                }
+                            }
                         }
                     })
                     .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

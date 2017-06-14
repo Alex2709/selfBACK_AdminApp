@@ -1,8 +1,10 @@
 package com.example.alexandre.motivational_messages_admin.View.Activities;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +21,11 @@ public class NewConversion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_conversion);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Conversion management");
 
         final EditText et_activityName = (EditText)findViewById(R.id.et_activityName);
         final EditText et_stepsPerMinute = (EditText)findViewById(R.id.et_stepsPerMinute);
@@ -46,5 +53,10 @@ public class NewConversion extends AppCompatActivity {
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
         super.finish();
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+        return true;
     }
 }

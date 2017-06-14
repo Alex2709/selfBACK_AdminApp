@@ -3,9 +3,11 @@ package com.example.alexandre.motivational_messages_admin.View.Activities;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -48,6 +50,11 @@ public class ConfirmationManager extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_manager);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Confirmations management");
 
         context = this;
 
@@ -107,7 +114,7 @@ public class ConfirmationManager extends AppCompatActivity {
                                 tv_noneConf.setVisibility(View.GONE);
                             pb_conf.setIndeterminate(false);
                             pb_conf.setVisibility(View.GONE);
-                            Toast.makeText(context, Integer.toString(confirmationList.size()) + " confirmations found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, Integer.toString(confirmationList.size()) + " confirmation(s) found", Toast.LENGTH_SHORT).show();
                             adapter.notifyDataSetChanged();
                         }
                         else{
@@ -149,5 +156,10 @@ public class ConfirmationManager extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+        return true;
     }
 }

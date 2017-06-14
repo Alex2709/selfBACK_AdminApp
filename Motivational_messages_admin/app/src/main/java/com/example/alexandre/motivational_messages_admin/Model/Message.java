@@ -111,6 +111,7 @@ public class Message implements Parcelable{
             this.quote = new Quote(message.getQuote().getAuthor(), message.getQuote().getContent());
         this.achievement = message.getAchievement();
         this.category = message.getCategory();
+        this.dayWeek = message.getDayWeek();
     }
 
     public Message(String content, Quote quote, String category, MessagesManager.Achievement achievement, String dayWeek) {

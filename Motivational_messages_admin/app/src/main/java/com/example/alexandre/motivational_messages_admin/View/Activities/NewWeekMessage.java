@@ -1,17 +1,21 @@
 package com.example.alexandre.motivational_messages_admin.View.Activities;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alexandre.motivational_messages_admin.Controller.MessageDAO;
 import com.example.alexandre.motivational_messages_admin.Model.Message;
@@ -26,6 +30,8 @@ public class NewWeekMessage extends AppCompatActivity {
     public static TextView tv_quote;
     public static ImageButton bt_removeQuote;
 
+    private Context context;
+
     public static Message newMessage;
     protected Message toEdit;
     protected Quote editQuote;
@@ -35,6 +41,13 @@ public class NewWeekMessage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_week_messages);
+
+        context = this;
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("New week message");
 
         newMessage = getIntent().getParcelableExtra("messageToEdit");
         if (newMessage != null) {
@@ -60,6 +73,7 @@ public class NewWeekMessage extends AppCompatActivity {
 
         if (editing) {
             bt_send.setText("Edit");
+            actionBar.setTitle("New week message");
             switch (newMessage.getAchievement()) {
                 case Low:
                     rg_achievementLevel.check(R.id.rb_newWeekM_Low);
@@ -90,8 +104,10 @@ public class NewWeekMessage extends AppCompatActivity {
                     break;
             }
 
-            if (newMessage.getQuote() != null)
+            if (newMessage.getQuote() != null){
                 tv_quote.setText(Html.fromHtml(newMessage.getQuote().toString()));
+                tv_quote.setVisibility(View.VISIBLE);
+            }
 
             et_content.setText(newMessage.getContent(), TextView.BufferType.EDITABLE);
         }
@@ -149,12 +165,12 @@ public class NewWeekMessage extends AppCompatActivity {
                 }
                 newMessage.setCategory(category);
                 rb_index = rg_achievementLevel.getCheckedRadioButtonId();
-                if (rb_index == R.id.rb_newDayM_Low) {
+                if (rb_index == R.id.rb_newWeekM_Low) {
                     newMessage.setAchievement(MessagesManager.Achievement.Low);
                 } else {
-                    if (rb_index == R.id.rb_newDayM_Moderate)
+                    if (rb_index == R.id.rb_newWeekM_Moderate)
                         newMessage.setAchievement(MessagesManager.Achievement.Moderate);
-                    else if (rb_index == R.id.rb_newDayM_High)
+                    else if (rb_index == R.id.rb_newWeekM_High)
                         newMessage.setAchievement(MessagesManager.Achievement.High);
                     else
                         newMessage.setAchievement(MessagesManager.Achievement.Full);
@@ -163,21 +179,35 @@ public class NewWeekMessage extends AppCompatActivity {
                 newMessage.setContent(et_content.getText().toString());
 
                 if (editing) {
-                    MessageDAO.getInstance().updateMessage(toEdit, newMessage);
+                    if(!et_content.getText().toString().equals("")){
+                        MessageDAO.getInstance().updateMessage(toEdit, newMessage);
+                        finish();
+                        Intent intent = new Intent(NewWeekMessage.this, MessagesManagerNoCate.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(context, "Message's content is empty",  Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    if (MessageDAO.getInstance().addMessage(newMessage))
-                        Log.d("add", "message added");
-                    else {
-                        Log.d("add", "message not added");
+                    if(!et_content.getText().toString().equals("")){
+                        MessageDAO.getInstance().addMessage(newMessage);
+                        finish();
+                        Intent intent = new Intent(NewWeekMessage.this, MessagesManagerNoCate.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(context, "Message's content is empty",  Toast.LENGTH_SHORT).show();
                     }
                 }
-                finish();
-                Intent intent = new Intent(NewWeekMessage.this, MessagesManagerNoCate.class);
-                startActivity(intent);
 
             }
 
             ;
         });
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+        return true;
     }
 }

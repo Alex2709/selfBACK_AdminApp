@@ -2,8 +2,10 @@ package com.example.alexandre.motivational_messages_admin.View.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,6 +19,9 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Administrator settings");
 
         context = this;
 
@@ -40,7 +45,7 @@ public class MainMenu extends AppCompatActivity {
         bt_messagesManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent messagesManagerActivity = new Intent(MainMenu.this, MessagesManager.class);
+                Intent messagesManagerActivity = new Intent(MainMenu.this, MessagesManagerNoCate.class);
                 startActivity(messagesManagerActivity);
             }
         });
@@ -68,5 +73,7 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(NewActivityActivity);
             }
         });
-            }
+        bt_messagesNoCate.setVisibility(View.GONE);
+    }
+
 }

@@ -3,9 +3,11 @@ package com.example.alexandre.motivational_messages_admin.View.Activities;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -47,6 +49,11 @@ public class InformationManager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
         context = this;
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Information management");
 
         informationList = new ArrayList<>();
         information = new Information("","");
@@ -145,5 +152,10 @@ public class InformationManager extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+        return true;
     }
 }
